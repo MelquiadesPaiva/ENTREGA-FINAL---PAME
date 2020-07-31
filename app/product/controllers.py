@@ -18,9 +18,7 @@ def create(id):
     if not data or not name or not description or not price:
         return {'error': 'dados insuficientes'}, 400
 
-    owner = User.query.get_or_404(id)
-
-    product = Product(name=name, description=description, price=price, owner_id=owner.id)
+    product = Product(name=name, description=description, price=price)
 
     db.session.add(product)
     db.session.commit()
